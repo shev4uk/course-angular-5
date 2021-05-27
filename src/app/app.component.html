@@ -14,3 +14,7 @@
   <li>Item 2</li>
   <li>Item 3</li>
 </ul>
+
+<div *ngFor='let item of list'>
+  <p class="todo" [ngClass]="{'todo-done': item.done}">{{item.name}}</p>
+</div>

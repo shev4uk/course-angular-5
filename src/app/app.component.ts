@@ -24,6 +24,24 @@ export class AppComponent {
     price: 50
   }];
 
+  list = [{
+    name: 'хліб',
+    value: 1,
+    done: true
+  },{
+    name: 'сало',
+    value: 0.5,
+    done: false
+  },{
+    name: 'цибуля',
+    value: 0.5,
+    done: true
+  },{
+    name: 'картопля',
+    value: 3,
+    done: false
+  }]
+
   showDropDown = false;
 
   constructor () {
