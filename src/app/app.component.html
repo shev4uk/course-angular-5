@@ -1,0 +1,5 @@
+<div class="product" *ngFor="let product of products" (click)="showProduct(product.name)">
+    <h3>{{product.name}}</h3>
+    <p>{{product.price}}</p>
+    <p>{{typeProduct[product.type]}}</p>
+</div>
