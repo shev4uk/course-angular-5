@@ -1,0 +1,8 @@
+<p>header works!</p>
+{{total}}
+<div [ngClass]="{'error': isErrorClass}">{{ counter }}</div>
+<button [disabled]="isDisabled" (click)="increase()">Click</button>
+<div>
+    <input [(ngModel)]="name" placeholder="Model">
+    <button (click)="submitName()">Submit</button>
+</div>

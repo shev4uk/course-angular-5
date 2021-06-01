@@ -1,0 +1,6 @@
+<div>
+    <input type="checkbox" [checked]="inputProduct.status" (change)="changeStatus()"> Status {{inputProduct.status}}
+</div> 
+<p>{{inputProduct.name}}</p>
+<p>{{inputProduct.price}}</p>
+<button (click)="removeProduct()">Remove</button>

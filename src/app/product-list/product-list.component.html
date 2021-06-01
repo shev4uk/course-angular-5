@@ -1,0 +1,6 @@
+<div>
+    <input [(ngModel)]="newProduct.name" placeholder="name">
+    <input [(ngModel)]="newProduct.price" placeholder="price">
+    <button (click)="addProduct()">Add</button>
+</div>
+<app-product-item *ngFor="let product of products; let i = index;" [inputProduct]="product" [index]="i" (remove)="removeProductByIndex($event)" (changeStatusProduct)="changeStatus($event)"></app-product-item>
