@@ -1,0 +1,28 @@
+<div class="dark">
+    <app-menu #menu [menu]="listMenu"></app-menu>
+</div>
+
+<button (click)="toggleMenu()">Menu</button>
+<button (click)="toggleChildComp()">Toggle</button>
+
+<div *ngIf="showChildComp">
+    <app-child-comp [name]="name"></app-child-comp>
+    <input type="text" [(ngModel)]="name" />
+</div>
+
+<input type="text" [(ngModel)]="tax">
+<app-product-item *ngFor="let product of products" [product]="product" [tax]="tax"></app-product-item>
+
+
+<p>
+    Catalog Product:
+    <ng-container *ngIf="products.length > 0; else notFound">
+        {{products.length}} products
+    </ng-container>
+    <ng-template #notFound>
+        Not found
+    </ng-template>
+</p>
+
+<button (click)="changeView('list')">List</button>
+<button (click)="changeView('grid')">Grid</button>

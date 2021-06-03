@@ -1,0 +1,15 @@
+@import 'var';
+
+:host {
+    display: block;
+    background-color: cornsilk;
+}
+:host-context(.dark) {
+    background-color: $bg-primaty;
+    ul li a {
+        color: #fff;
+    }
+}
+ul li a {
+    color: red;
+}
