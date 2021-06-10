@@ -1,0 +1,9 @@
+<div appMark [colorBack]="'green'" (test)="onTest($event)">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, expedita. Provident excepturi sed similique architecto harum exercitationem voluptate non eum, sint nobis, labore alias libero molestiae, enim temporibus assumenda asperiores.</div>
+
+<img appAddImage [name]="'add'" alt="">
+
+<div [ngSwitch]="price">
+    <p *ngSwitchCase="'sale'">50</p>
+    <p *ngSwitchCase="'regular'">80</p>
+    <p *ngSwitchDefault>60</p>
+</div>

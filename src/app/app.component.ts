@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  
+  price: string = 'hit';
+
+  onTest(event: any) {
+    console.log(event);
+  }
 }
