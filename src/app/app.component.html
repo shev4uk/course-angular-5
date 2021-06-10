@@ -1,0 +1,13 @@
+<p>{{nowDate | date : 'dd.MM.YY'}}</p>
+<p>{{percentPrice | percent}}</p>
+<p>{{price | currency:"UAH":"symbol"}}</p>
+<p>{{text | slice:0:10}}</p>
+<p>{{product | json}}</p>
+<p>{{length | metr : 'km.'}}</p>
+
+<input type="text" [(ngModel)]="search">{{search}}
+<button (click)="orderSort = !orderSort">order</button>
+<div *ngFor="let user of users | sortArray : search : orderSort">
+    <p>{{user.name}}</p>
+    <p>{{user.age}}</p>
+</div>
