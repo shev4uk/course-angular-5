@@ -1,0 +1,16 @@
+<form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <div>
+        <input type="text" formControlName="loginName">
+    </div>
+    <div>
+        <input type="password" formControlName="passwordForm">
+        {{f.passwordForm.errors | json}}
+        <div *ngIf="f.passwordForm.errors && f.passwordForm.errors.required">
+            this field is required
+        </div>
+        <div *ngIf="f.passwordForm.errors && f.passwordForm.errors.minlength">
+            minlength password is {{f.passwordForm.errors.minlength.requiredLength}}
+        </div>
+    </div>
+    <input type="submit" value="Send" [disabled]="!loginForm.valid">
+</form>
