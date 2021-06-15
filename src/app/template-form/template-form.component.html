@@ -1,0 +1,15 @@
+<form #loginForm="ngForm" (ngSubmit)="onSubmitTemplateForm()">
+    <div>
+        <input type="text" [(ngModel)]="user.name" name="firstName" #name="ngModel" required>
+        <div *ngIf="!name.valid && name.dirty">
+            Field name is required
+        </div>
+    </div>
+    <div>
+        <input type="email" [(ngModel)]="user.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+    </div>
+    <div>
+        <input type="submit" value="Send" [disabled]="!loginForm.form.valid">
+    </div>
+    {{loginForm.form.valid | json}}
+</form>
