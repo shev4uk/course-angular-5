@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Product } from './product.model';
 
 @Component({
@@ -10,6 +11,7 @@ export class AppComponent {
 
   text: string = '';
   orderDirection: boolean = false;
+  addFormProduct: FormGroup;
 
   products: Product[] = [{
     id: 1,
@@ -25,8 +27,28 @@ export class AppComponent {
     price: 50
   }];
 
+  constructor(
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit() {
+    this.addFormProduct = this.fb.group({
+      name: ['', [Validators.required]],
+      price: ['', [Validators.required]]
+    })
+  }
+
   orderPrice() {
     this.orderDirection = !this.orderDirection;
+  }
+
+  addProduct() {
+    console.log(this.addFormProduct.value);
+    this.products.push({
+      id: 5,
+      ...this.addFormProduct.value
+    });
+    console.log(this.products);
   }
   
 }
