@@ -11,40 +11,27 @@
      </div>
 </div>
 <div class="form-row form-group">
-  <div class="col-4">
-    <input type="text" class="form-control" placeholder="Search">
-    </div>
+    <form>
+        <div class="col-4">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="text" name="search">
+        </div>
+    </form>
 </div>
+{{orderDirection}}
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">Product</th>
-      <th scope="col">Price</th>
+      <th scope="col" (click)="orderPrice()">Price</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Product 1</td>
-      <td>$100</td>
-      <td><button type="button" class="close">
-          <span aria-hidden="true">&times;</span>
-        </button></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Product 2</td>
-      <td>$50</td>
-      <td><button type="button" class="close">
-          <span aria-hidden="true">&times;</span>
-        </button></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Product 3</td>
-      <td>$50</td>
+    <tr *ngFor="let product of products | search : text | order : orderDirection; let i = index">
+      <th scope="row">{{product.id}}</th>
+      <td>{{product.name}}</td>
+      <td>{{product.price | currency}}</td>
       <td><button type="button" class="close">
           <span aria-hidden="true">&times;</span>
         </button></td>
