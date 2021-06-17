@@ -1,0 +1,6 @@
+<ol>
+    <li *ngFor="let todo of todos | sortTodo; let i = index;" class="item-todo">
+        <app-todo-item [todo]="todo" [index]="i" (updateState)="updateStateTodo($event)" (removeTodo)="removeTodo($event)"></app-todo-item>
+    </li>
+</ol>
+<button (click)="removeAllTodo()">Clear</button>

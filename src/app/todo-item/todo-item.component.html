@@ -1,0 +1,8 @@
+<label>
+    <input type="checkbox" (change)="updateStateTodo($event, index)" [checked]="todo.state">
+    <span [ngClass]="{'done': todo.state}">{{todo.name}}</span> 
+</label>
+<div>
+    <button (click)="remove(index)">Remove</button>
+    <button (click)="edit(index)">Edit</button>
+</div>
