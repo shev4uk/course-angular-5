@@ -1,0 +1,3 @@
+<div *ngFor="let post of posts; trackBy: trackPost" class="item-post">
+    <a [routerLink]="[ '/posts', post.id ]">{{post.title}}</a>
+</div>
