@@ -1,0 +1,64 @@
+<form [formGroup]="orderForm">
+    <div>
+        <mat-form-field >
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="orderForm.controls['name'].hasError('required')">
+                Name is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="orderForm.controls['name'].hasError('minlength')">
+                Min length is 3
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="orderForm.controls['email'].hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="orderForm.controls['email'].hasError('email')">
+                Please enter a valid email address
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field >
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" mask='(000) 000-0000'>
+            <mat-icon matPrefix>call</mat-icon>
+            <mat-error *ngIf="orderForm.controls['phone'].hasError('required')">
+                Phone is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="orderForm.controls['phone'].hasError('mask')">
+                Format phone {{orderForm.controls['phone'].errors?.mask.requiredMask}}
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [min]="nextDay" formControlName="dateOrder">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="orderForm.controls['dateOrder'].hasError('required')">
+                Please choose date delivery
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Delivery</mat-label>
+            <mat-select formControlName="delivery">
+              <mat-option *ngFor="let delivery of deliveries" [value]="delivery.id">
+                {{delivery.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="orderForm.controls['delivery'].hasError('required')">
+                Please choose type delivery
+            </mat-error>
+          </mat-form-field>
+    </div>
+    <button mat-stroked-button (click)="openModal()">Send</button>
+</form>
