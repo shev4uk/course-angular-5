@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { AuthorModule } from './shared/components/author/author.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
