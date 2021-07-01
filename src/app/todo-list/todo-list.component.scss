@@ -1,0 +1,40 @@
+.mat-icon-button.active {
+    color: #ff5656;
+}
+a {
+    color: #fff;
+    text-decoration: none;
+}
+.grid-todo {
+    @media (min-width: 768px) {
+        display: grid;
+        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 992px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (min-width: 1200px) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.list-todo {
+    .mat-card  {
+        margin-bottom: 15px;
+        display: grid;
+        grid-auto-columns: auto max-content;
+        grid-template-areas:
+            "header action"
+            "content action";
+    }
+    .mat-card-header {
+        grid-area: header;
+    }
+    .mat-card-content {
+        grid-area: content;
+    }
+    .mat-card-actions {
+        grid-area: action;
+    }
+}

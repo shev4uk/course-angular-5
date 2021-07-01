@@ -1,0 +1,8 @@
+<div class="container">
+    <div>
+        <p>{{'title' | translate}}</p>
+        <button (click)="changeLang('en')">En</button>
+        <button (click)="changeLang('uk')">Ua</button>
+    </div>
+    <router-outlet></router-outlet>
+</div>
