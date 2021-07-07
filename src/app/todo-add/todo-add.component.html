@@ -1,1 +1,49 @@
-<p>todo-add works!</p>
+<h2>Add new todo</h2>
+<form [formGroup]="addTodoForm" (ngSubmit)="addNewTodo()">
+    <div class="form-row">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput formControlName="name">
+            <mat-error *ngIf="form['name'].hasError('required')">
+                Name is required
+            </mat-error>
+          </mat-form-field>
+    </div>
+    <div class="form-row">
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" [matTextareaAutosize]="true" [matAutosizeMaxRows]="5"></textarea>
+          </mat-form-field>
+          <mat-error *ngIf="form['description'].hasError('required')">
+            Description is required
+          </mat-error>
+    </div>
+    <div class="form-row">
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" [min]="minDay" formControlName="dateComplete">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="form['dateComplete'].hasError('required')">
+                Date is required
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div class="form-row">
+        <label id="example-radio-group-label">Choose priority Todo</label>
+        <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group" formControlName="priority">
+        <mat-radio-button class="example-radio-button" *ngFor="let priority of priorities" [value]="priority.id">
+            {{priority.name}}
+        </mat-radio-button>
+        <mat-error *ngIf="form['priority'].hasError('required')">
+            Priority is required
+        </mat-error>
+        </mat-radio-group>
+    </div>
+    <div class="form-row">
+        <mat-checkbox formControlName="status">Done</mat-checkbox>
+    </div>
+    <button mat-flat-button color="primary" [disabled]="!addTodoForm.valid">Add</button>
+</form>

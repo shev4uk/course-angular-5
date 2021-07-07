@@ -1,9 +1,28 @@
+.wrap-button {
+    margin: 15px 0;
+}
 .mat-icon-button.active {
     color: #ff5656;
 }
 a {
     color: #fff;
     text-decoration: none;
+}
+.mat-card {
+    &.done {
+        background-color: rgb(41, 146, 15);
+    }
+    &:not(.done) {
+        &.low {
+            background-color: rgba(255, 0, 0, 0.3);
+        }
+        &.middle {
+            background-color: rgba(255, 0, 0, 0.6);
+        }
+        &.high {
+            background-color: rgba(255, 0, 0, 0.9);
+        }
+    }
 }
 .grid-todo {
     @media (min-width: 768px) {
