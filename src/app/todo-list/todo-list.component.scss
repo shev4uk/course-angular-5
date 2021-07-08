@@ -1,3 +1,5 @@
+@import '../../assets/scss/mixins';
+
 .wrap-button {
     margin: 15px 0;
 }
@@ -13,15 +15,7 @@ a {
         background-color: rgb(41, 146, 15);
     }
     &:not(.done) {
-        &.low {
-            background-color: rgba(255, 0, 0, 0.3);
-        }
-        &.middle {
-            background-color: rgba(255, 0, 0, 0.6);
-        }
-        &.high {
-            background-color: rgba(255, 0, 0, 0.9);
-        }
+        @include colorPriority;
     }
 }
 .grid-todo {

@@ -11,6 +11,9 @@ const routes: Routes = [
         path: 'todo/add', loadChildren: () => import('./todo-add/todo-add.module').then(m => m.TodoAddModule)
     },
     {
+        path: 'todo/edit', loadChildren: () => import('./todo-edit/todo-edit.module').then(m => m.TodoEditModule)
+    },
+    {
         path: 'todo/:id', loadChildren: () => import('./todo-view/todo-view.module').then(m => m.TodoViewModule)
     },
     {

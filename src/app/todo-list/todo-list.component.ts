@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../shared/models/todo.model';
+import { SaveTodo } from '../shared/models/todo.model';
 import { DataService } from '../shared/services/data.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { DataService } from '../shared/services/data.service';
 })
 export class TodoListComponent implements OnInit {
 
-  todos: Todo[];
+  todos: SaveTodo[];
   defaultView = 'grid';
 
   constructor(

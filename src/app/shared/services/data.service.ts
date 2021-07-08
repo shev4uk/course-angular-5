@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Todo } from '../models/todo.model';
+import { SaveTodo, Todo } from '../models/todo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +15,19 @@ export class DataService {
     private http: HttpClient
   ) { }
 
-  getAllTodoList(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.urlApi);
+  getAllTodoList(): Observable<SaveTodo[]> {
+    return this.http.get<SaveTodo[]>(this.urlApi);
   }
 
-  addNewTodo(todo: any): Observable<any> {
-    return this.http.post<any>(this.urlApi, todo);
+  addNewTodo(todo: Todo): Observable<SaveTodo> {
+    return this.http.post<SaveTodo>(this.urlApi, todo);
+  }
+
+  getTodo(id: string): Observable<SaveTodo> {
+    return this.http.get<SaveTodo>(`${this.urlApi}/${id}`);
+  }
+
+  updateTodo(todo: Todo, id: string): Observable<SaveTodo> {
+    return this.http.put<SaveTodo>(`${this.urlApi}/${id}`, todo);
   }
 }

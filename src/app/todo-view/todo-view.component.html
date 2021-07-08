@@ -1,4 +1,21 @@
-<button mat-fab color="primary" class="icon-back" (click)="goToList()">
+<ng-container *ngIf="todo">
+    <small>Todo created at {{createdAt | date}}</small>
+    <h2>{{todo.name}}</h2>
+    <p>{{todo.description}}</p>
+    <p>DeadLine {{todo.dateComplete | date}}</p>
+    <div class="priority">
+        <div class="priority-indicator" [ngClass]="{'low': todo.priority === priority['Low'], 'middle': todo.priority === priority['Middle'], 'high': todo.priority === priority['High']}"></div>
+        <span>
+            <ng-container *ngIf="todo.status; else notDone">
+                Done
+            </ng-container>
+            <ng-template #notDone>
+                Not yet
+            </ng-template>
+        </span>
+    </div>
+</ng-container>
+<button mat-flat-button color="primary" class="icon-back" (click)="goToList()">
     <mat-icon>arrow_back</mat-icon>
+    Go To List
 </button>
-<p>todo-view works!</p>
