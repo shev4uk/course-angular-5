@@ -30,4 +30,8 @@ export class DataService {
   updateTodo(todo: Todo, id: string): Observable<SaveTodo> {
     return this.http.put<SaveTodo>(`${this.urlApi}/${id}`, todo);
   }
+
+  deleteTodo(id: number): Observable<SaveTodo> {
+    return this.http.delete<SaveTodo>(`${this.urlApi}/${id}`);
+  }
 }

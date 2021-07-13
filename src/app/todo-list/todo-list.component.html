@@ -13,17 +13,24 @@
     </button>
 </div>
 <div class="{{defaultView}}-todo">
-    <mat-card class="example-card todo-{{todo.priority}}" *ngFor="let todo of todos" [ngClass]="{'done': todo.status, 'low': todo.priority === 1, 'middle': todo.priority === 2, 'high': todo.priority === 3}">
-        <mat-card-header>
-            <mat-card-title><a [routerLink]="['/todo', todo.id]">{{todo.name}}</a></mat-card-title>
-            <mat-card-subtitle>{{todo.dateComplete | date}}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content>
-            <p>{{todo.description}}</p>
-        </mat-card-content>
-        <mat-card-actions>
-            <button mat-raised-button [routerLink]="['/todo/edit', todo.id]">Edit</button>
-            <button mat-raised-button color="warn">Delete</button>
-        </mat-card-actions>
-    </mat-card>
+    <ng-container *ngIf="todos.length > 0; else noDate">
+        <mat-card class="example-card todo-{{todo.priority}}" *ngFor="let todo of todos; let i = index" [ngClass]="{'done': todo.status, 'low': todo.priority === 1, 'middle': todo.priority === 2, 'high': todo.priority === 3}">
+            <mat-card-header>
+                <mat-card-title><a [routerLink]="['/todo', todo.id]">{{todo.name}}</a></mat-card-title>
+                <mat-card-subtitle>{{todo.dateComplete | date}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p>{{todo.description}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button [routerLink]="['/todo/edit', todo.id]">Edit</button>
+                <button mat-raised-button color="warn" (click)="deleteList(todo.id, i)">Delete</button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-container>
+    <ng-template #noDate>
+        <h3>
+            Not todo. You can create first one
+        </h3>
+    </ng-template>
 </div>
