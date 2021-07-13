@@ -14,6 +14,27 @@ export class TodoListComponent implements OnInit {
 
   todos: SaveTodo[] = [];
   defaultView = 'grid';
+  paramSortDefault = {
+    property: 'status',
+    direction: 'ASC'
+  };
+  paramsSort = [{
+    property: 'status',
+    direction: 'ASC',
+    name: 'First not complate'
+  }, {
+    property: 'status',
+    direction: 'DESC',
+    name: 'First complate'
+  }, {
+    property: 'dateComplete',
+    direction: 'ASC',
+    name: 'sort by ascending date'
+  }, {
+    property: 'dateComplete',
+    direction: 'DESC',
+    name: 'sort by descending date'
+  }];
 
   constructor(
     private data: DataService,
@@ -57,6 +78,14 @@ export class TodoListComponent implements OnInit {
     .subscribe((res) => {
       this.todos.splice(index, 1);
     })
+  }
+
+  changeSort(property: string, direction: string) {
+    this.paramSortDefault = {property, direction};
+  }
+
+  identify(index: number, item: SaveTodo) {
+    return item.id;
   }
 
 }

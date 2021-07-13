@@ -10,6 +10,11 @@ a {
     color: #fff;
     text-decoration: none;
 }
+.wrap-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
 .mat-card {
     &.done {
         background-color: rgb(41, 146, 15);

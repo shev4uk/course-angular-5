@@ -4,17 +4,23 @@
         Add todo
     </button>
 </div>
-<div>
-    <button mat-icon-button (click)="changeView('grid')" [ngClass]="{'active': defaultView === 'grid'}">
-        <mat-icon>grid_view</mat-icon>
-    </button>
-    <button mat-icon-button (click)="changeView('list')" [ngClass]="{'active': defaultView === 'list'}">
-        <mat-icon>view_list</mat-icon>
-    </button>
+<div class="wrap-buttons">
+    <div>
+        <button mat-icon-button (click)="changeView('grid')" [ngClass]="{'active': defaultView === 'grid'}">
+            <mat-icon>grid_view</mat-icon>
+        </button>
+        <button mat-icon-button (click)="changeView('list')" [ngClass]="{'active': defaultView === 'list'}">
+            <mat-icon>view_list</mat-icon>
+        </button>
+    </div>
+    <button type="button" mat-flat-button [matMenuTriggerFor]="sortMenu">Sort</button>
+    <mat-menu #sortMenu>
+        <menu mat-menu-item *ngFor="let param of paramsSort" (click)="changeSort(param.property, param.direction)">{{param.name}}</menu>
+    </mat-menu>
 </div>
 <div class="{{defaultView}}-todo">
     <ng-container *ngIf="todos.length > 0; else noDate">
-        <mat-card class="example-card todo-{{todo.priority}}" *ngFor="let todo of todos; let i = index" [ngClass]="{'done': todo.status, 'low': todo.priority === 1, 'middle': todo.priority === 2, 'high': todo.priority === 3}">
+        <mat-card class="example-card todo-{{todo.priority}}" *ngFor="let todo of todos | sort : paramSortDefault; let i = index; trackBy: identify" [ngClass]="{'done': todo.status, 'low': todo.priority === 1, 'middle': todo.priority === 2, 'high': todo.priority === 3}">
             <mat-card-header>
                 <mat-card-title><a [routerLink]="['/todo', todo.id]">{{todo.name}}</a></mat-card-title>
                 <mat-card-subtitle>{{todo.dateComplete | date}}</mat-card-subtitle>
