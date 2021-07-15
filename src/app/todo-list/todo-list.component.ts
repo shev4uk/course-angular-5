@@ -5,6 +5,7 @@ import { SaveTodo } from '../shared/models/todo.model';
 import { DataService } from '../shared/services/data.service';
 import { filter, switchMap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -36,9 +37,13 @@ export class TodoListComponent implements OnInit {
     name: 'sort by descending date'
   }];
 
+  searchForm: FormGroup;
+  textSeach = '';
+
   constructor(
     private data: DataService,
     private dialog: MatDialog,
+    private fb: FormBuilder
   ) { 
     const savedView = localStorage.getItem('view');
     if (savedView) {
@@ -50,6 +55,16 @@ export class TodoListComponent implements OnInit {
     this.data.getAllTodoList().subscribe((todos) => {
       this.todos = todos;
     });
+    this.searchForm = this.fb.group({
+      name: ['']
+    });
+    this.searchForm.controls['name'].valueChanges.subscribe((name) => {
+      this.textSeach = name;
+    })
+  }
+
+  clearSearch() {
+    this.searchForm.controls['name'].setValue('');
   }
 
   changeView(view: string) {
@@ -58,7 +73,7 @@ export class TodoListComponent implements OnInit {
   }
 
   deleteList(id: number, index: number) {
-    console.log(id);
+    console.log(id, index);
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
         text: 'Are you want delete the todo?',

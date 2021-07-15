@@ -56,3 +56,11 @@ a {
         grid-area: action;
     }
 }
+
+.wrap-form {
+    display: flex;
+    align-items: center;
+    form {
+        margin-right: 20px;
+    }
+}
