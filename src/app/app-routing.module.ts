@@ -17,6 +17,9 @@ const routes: Routes = [
         path: 'todo/:id', loadChildren: () => import('./todo-view/todo-view.module').then(m => m.TodoViewModule)
     },
     {
+        path: 'contact', loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
+    },
+    {
         path: '', redirectTo: 'todo', pathMatch: 'full'
     },
     {

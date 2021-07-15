@@ -27,6 +27,7 @@
     "@angular/router": "~12.0.0",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "@types/googlemaps": "^3.43.3",
     "express": "^4.17.1",
     "path": "^0.12.7",
     "rxjs": "~6.6.0",

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="55px" height="64px" viewBox="0 0 55 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Combined Shape</title>
+    <defs>
+        <path d="M940.5,2981 C950.164983,2981 958,2988.83502 958,2998.5 C958,3004.94332 952.166667,3014.10999 940.5,3026 C928.833333,3014.10999 923,3004.94332 923,2998.5 C923,2988.83502 930.835017,2981 940.5,2981 Z M940.5,2991 C936.357864,2991 933,2994.35786 933,2998.5 C933,3002.64214 936.357864,3006 940.5,3006 C944.642136,3006 948,3002.64214 948,2998.5 C948,2994.35786 944.642136,2991 940.5,2991 Z" id="path-1"></path>
+        <filter x="-42.9%" y="-33.3%" width="185.7%" height="166.7%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Update" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Combined-Shape" transform="translate(-913.000000, -2971.000000)">
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+            <use fill="#CF0A2C" fill-rule="evenodd" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
